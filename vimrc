@@ -4,10 +4,10 @@ call plug#begin('~/.vim/plugged')
     Plug 'yuttie/comfortable-motion.vim'
     Plug 'tomasr/molokai'
 
-	Plug 'MarcWeber/vim-addon-mw-utils'
-	Plug 'tomtom/tlib_vim'
-	Plug 'garbas/vim-snipmate'
-	Plug 'honza/vim-snippets'
+    Plug 'MarcWeber/vim-addon-mw-utils'
+    Plug 'tomtom/tlib_vim'
+    Plug 'garbas/vim-snipmate'
+    Plug 'honza/vim-snippets'
 
     Plug 'tpope/vim-fugitive'
     Plug 'bling/vim-airline'
