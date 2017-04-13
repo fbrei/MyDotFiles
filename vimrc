@@ -1,5 +1,7 @@
 call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+    Plug 'scrooloose/nerdcommenter'
+
     Plug 'taglist.vim', { 'on': 'TlistToggle' }
     Plug 'yuttie/comfortable-motion.vim'
     Plug 'tomasr/molokai'
@@ -16,6 +18,7 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 
+filetype plugin on
 set nocompatible
 set lazyredraw
 set scrolloff=5
@@ -55,11 +58,11 @@ set history=10000
 
 set wildignore=*.class
 
-nnoremap <silent> s :vsplit<CR>
-nnoremap <silent> S :split<CR>
+nnoremap <silent> <leader>s :vsplit<CR>
+nnoremap <silent> <leader>S :split<CR>
 
-"inoremap { {<CR>}<ESC>ko<TAB>
-inoremap { {}<ESC>i
+inoremap { {<CR>}<ESC>ko<TAB>
+""inoremap { {}<ESC>i
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
 inoremap " ""<ESC>i
@@ -79,42 +82,47 @@ hi NonText ctermbg=none
 hi LineNr ctermbg=none
 hi Special ctermbg=none
 
-nnoremap <C-Left> gT
-nnoremap <C-Right> gt
+nnoremap <C-Left> <C-W><Left>
+nnoremap <C-Right> <C-W><Right>
+nnoremap <C-Up> <C-W><Up>
+nnoremap <C-Down> <C-W><Down>
 
 "" Switch tabs with Alt + Number
-execute "set <M-1>=\e1"
-nnoremap <M-1> 1gt
+""execute "set <M-1>=\e1"
+""nnoremap <M-1> 1gt
+""
+""execute "set <M-2>=\e2"
+""nnoremap <M-2> 2gt
+""
+""execute "set <M-3>=\e3"
+""nnoremap <M-3> 3gt
+""
+""execute "set <M-4>=\e4"
+""nnoremap <M-4> 4gt
+""
+""execute "set <M-5>=\e5"
+""nnoremap <M-5> 5gt
+""
+""execute "set <M-6>=\e6"
+""nnoremap <M-6> 6gt
+""
+""execute "set <M-7>=\e7"
+""nnoremap <M-7> 7gt
+""
+""execute "set <M-8>=\e8"
+""nnoremap <M-8> 8gt
+""
+""execute "set <M-9>=\e9"
+""nnoremap <M-9> 9gt
 
-execute "set <M-2>=\e2"
-nnoremap <M-2> 2gt
-
-execute "set <M-3>=\e3"
-nnoremap <M-3> 3gt
-
-execute "set <M-4>=\e4"
-nnoremap <M-4> 4gt
-
-execute "set <M-5>=\e5"
-nnoremap <M-5> 5gt
-
-execute "set <M-6>=\e6"
-nnoremap <M-6> 6gt
-
-execute "set <M-7>=\e7"
-nnoremap <M-7> 7gt
-
-execute "set <M-8>=\e8"
-nnoremap <M-8> 8gt
-
-execute "set <M-9>=\e9"
-nnoremap <M-9> 9gt
-
-let g:comfortable_motion_interval = 200.0 / 60
+let g:comfortable_motion_interval = 250.0 / 60
+let g:comfortable_motion_friction = 100.0
+let g:comfortable_motion_air_drag = 3.0
 
 let Tlist_Use_Right_Window = 1
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Close_On_Select = 1
+let Tlist_WinWidth = 50
 
 hi Visual term=reverse cterm=reverse guibg=Grey
 set laststatus=2
@@ -122,3 +130,15 @@ set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='base16_default'
+
+nnoremap <silent> <Leader>p  :bnext<CR>
+nnoremap <silent> <Leader>P  :bprevious<CR>
+
+set showcmd
+
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
