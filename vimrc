@@ -2,7 +2,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
     Plug 'scrooloose/nerdcommenter'
 
-    Plug 'taglist.vim', { 'on': 'TlistToggle' }
+    Plug 'majutsushi/tagbar'
+
     Plug 'yuttie/comfortable-motion.vim'
     Plug 'tomasr/molokai'
 
@@ -69,7 +70,9 @@ inoremap " ""<ESC>i
 
 nnoremap <silent><F2> :buffers<CR>:buffer<SPACE>
 nnoremap <silent><F3> :NERDTreeToggle<CR>
-nnoremap <silent><F4> :TlistToggle<CR>
+" nnoremap <silent><F4> :TlistToggle<CR>
+nnoremap <F4> :TagbarToggle<CR>
+
 
 nnoremap <silent> <C-S> :wa<CR>:mksession!<CR>:echo "Session saved"<CR>
 nnoremap <silent> <C-Q> :qa<CR>
@@ -119,10 +122,10 @@ let g:comfortable_motion_interval = 250.0 / 60
 let g:comfortable_motion_friction = 100.0
 let g:comfortable_motion_air_drag = 3.0
 
-let Tlist_Use_Right_Window = 1
-let Tlist_GainFocus_On_ToggleOpen = 1
-let Tlist_Close_On_Select = 1
-let Tlist_WinWidth = 50
+" let Tlist_Use_Right_Window = 1
+" let Tlist_GainFocus_On_ToggleOpen = 1
+" let Tlist_Close_On_Select = 1
+" let Tlist_WinWidth = 50
 
 hi Visual term=reverse cterm=reverse guibg=Grey
 set laststatus=2
