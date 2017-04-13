@@ -123,9 +123,17 @@ alias ping='ping -c 5'
 alias ll='ls -lah'
 alias l='ls'
 
+alias t='tree -L 3 --filelimit 15'
+alias j='jobs -l'
+
 alias vimconf='vim /home/felix/.vimrc'
 alias bashconf='vim /home/felix/.bashrc'
 alias i3conf='vim /home/felix/.config/i3/config'
+
+
+randpw() {
+	< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-$1};echo;
+}
 
 mkcd() {
 	mkdir $1;
@@ -133,3 +141,6 @@ mkcd() {
 }
 
 stty -ixon
+
+# added by Miniconda3 4.3.11 installer
+export PATH="/home/felix/.miniconda3/bin:$PATH"
