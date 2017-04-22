@@ -125,6 +125,7 @@ alias l='ls'
 
 alias t='tree -L 3 --filelimit 15'
 alias j='jobs -l'
+alias cp='cp -v'
 
 alias vimconf='vim /home/felix/.vimrc'
 alias bashconf='vim /home/felix/.bashrc'

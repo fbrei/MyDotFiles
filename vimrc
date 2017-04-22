@@ -5,7 +5,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'majutsushi/tagbar'
 
     Plug 'yuttie/comfortable-motion.vim'
+
     Plug 'tomasr/molokai'
+    Plug 'bounceme/base.vim'
 
     Plug 'MarcWeber/vim-addon-mw-utils'
     Plug 'tomtom/tlib_vim'
@@ -15,8 +17,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-fugitive'
     Plug 'bling/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    Plug 'yggdroot/indentline'
+    " Plug 'Yggdroot/indentLine'
 call plug#end()
+
+" let g:indentLine_setConceal = 0
+" let g:indentLine_concealcursor = 'nc'
 
 
 filetype plugin on
@@ -28,7 +33,7 @@ set t_Co=256
 filetype plugin on
 
 syntax on
-colorscheme molokai
+colorscheme base
 set background=dark
 
 set number
@@ -38,7 +43,7 @@ set tabstop=4
 set expandtab
 set shiftwidth=4
 
-set autoindent
+set smartindent
 
 set splitbelow
 set splitright
@@ -62,8 +67,8 @@ set wildignore=*.class
 nnoremap <silent> <leader>s :vsplit<CR>
 nnoremap <silent> <leader>S :split<CR>
 
-inoremap { {<CR>}<ESC>ko<TAB>
-""inoremap { {}<ESC>i
+" inoremap { {<CR>}<ESC>ko<TAB>
+inoremap { {}<ESC>i
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
 inoremap " ""<ESC>i
@@ -145,3 +150,7 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
+
+" let g:airline_left_sep = '▶'
+" let g:airline_right_sep = '◀'
+" let g:airline_powerline_fonts = 1
