@@ -1,0 +1,2 @@
+#!/bin/dash
+printf "(%s)" $(sudo zfs get compressratio $BLOCK_INSTANCE | tail -n 1 | cut -d " " -f 5)
