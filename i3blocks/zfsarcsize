@@ -1,5 +1,5 @@
-#!/bin/bash
-ARCSIZE=$(echo $(grep "^size" /proc/spl/kstat/zfs/arcstats | cut -d " " -f 33) " / (1024 * 1024)" | bc)
+#!/bin/dash
+ARCSIZE=$(echo $(grep -m 1 -Po '^size\ *4\ *\K\d+' /proc/spl/kstat/zfs/arcstats) " / (1024 * 1024)" | bc)
 UNIT="M"
 
 if [ $ARCSIZE -gt 1024 ]
