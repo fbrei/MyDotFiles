@@ -2,8 +2,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
     Plug 'scrooloose/nerdcommenter'
 
-    Plug 'majutsushi/tagbar'
-
     Plug 'yuttie/comfortable-motion.vim'
 
     Plug 'tomasr/molokai'
@@ -21,6 +19,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'sjl/gundo.vim'
 call plug#end()
 
+set hidden
+set nowrap
 
 filetype plugin on
 set nocompatible
@@ -66,8 +66,6 @@ set undofile
 set history=10000
 
 
-""set listchars=tab:▸\ ,eol:¬
-
 set wildignore=*.class
 
 nnoremap <silent> <leader>s :vsplit<CR>
@@ -80,10 +78,8 @@ inoremap [ []<ESC>i
 inoremap " ""<ESC>i
 inoremap qq <ESC>
 
-nnoremap <silent><F2> :buffers<CR>:buffer<SPACE>
-nnoremap <silent><F3> :NERDTreeToggle<CR>
-" nnoremap <silent><F4> :TlistToggle<CR>
-nnoremap <F4> :TagbarToggle<CR>
+nnoremap <silent><F2> :NERDTreeToggle<CR>
+nnoremap <silent><F3> :GundoToggle<CR>
 
 nnoremap <silent> <leader>u :GundoToggle<CR>
 nnoremap <silent> <C-S> :wa<CR>:mksession!<CR>:echo "Session saved"<CR>
