@@ -8,6 +8,7 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'tomasr/molokai'
     Plug 'bounceme/base.vim'
+    Plug 'sjl/badwolf'
 
     Plug 'MarcWeber/vim-addon-mw-utils'
     Plug 'tomtom/tlib_vim'
@@ -17,11 +18,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-fugitive'
     Plug 'bling/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    " Plug 'Yggdroot/indentLine'
+    Plug 'sjl/gundo.vim'
 call plug#end()
-
-" let g:indentLine_setConceal = 0
-" let g:indentLine_concealcursor = 'nc'
 
 
 filetype plugin on
@@ -38,12 +36,20 @@ set background=dark
 
 set number
 set ruler
+set wildmenu
+set showmatch
+set showcmd
+
+let mapleader=","
 
 set tabstop=4
 set expandtab
 set shiftwidth=4
 
-set smartindent
+set cursorline
+hi CursorLine   cterm=NONE ctermbg=black
+
+set autoindent
 
 set splitbelow
 set splitright
@@ -51,7 +57,7 @@ set splitright
 set incsearch
 set ignorecase
 set hlsearch
-nnoremap <silent> <F5> :nohlsearch<CR>
+nnoremap <silent> <leader><space> :nohlsearch<CR>
 
 
 set ssop-=options
@@ -72,13 +78,14 @@ inoremap { {}<ESC>i
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
 inoremap " ""<ESC>i
+inoremap qq <ESC>
 
 nnoremap <silent><F2> :buffers<CR>:buffer<SPACE>
 nnoremap <silent><F3> :NERDTreeToggle<CR>
 " nnoremap <silent><F4> :TlistToggle<CR>
 nnoremap <F4> :TagbarToggle<CR>
 
-
+nnoremap <silent> <leader>u :GundoToggle<CR>
 nnoremap <silent> <C-S> :wa<CR>:mksession!<CR>:echo "Session saved"<CR>
 nnoremap <silent> <C-Q> :qa<CR>
 nnoremap <silent> <C-L> :source Session.vim<CR>
@@ -136,21 +143,17 @@ hi Visual term=reverse cterm=reverse guibg=Grey
 set laststatus=2
 
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_theme='base16_default'
 
 nnoremap <silent> <Leader>p  :bnext<CR>
 nnoremap <silent> <Leader>P  :bprevious<CR>
 
-set showcmd
 
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 
-" let g:airline_left_sep = '▶'
-" let g:airline_right_sep = '◀'
-" let g:airline_powerline_fonts = 1
+let g:gundo_prefer_python3 = 1
