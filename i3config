@@ -18,14 +18,20 @@ set $mod Mod4
 font pango:Monospace 8
 
 # Set workspaces
-set $workspace1 "1: "
-set $workspace2 "2: "
-set $workspace3 "3: "
-#set $workspace3 "3: "
-set $workspace4 "4: "
-set $workspace5 "5: "
-#set $workspace6 "6: "
-set $workspace6 "6: "
+# set $workspace1 "1: "
+# set $workspace2 "2: "
+# set $workspace3 "3: "
+# set $workspace3 "3: "
+# set $workspace4 "4: "
+# set $workspace5 "5: "
+# set $workspace6 "6: "
+# set $workspace6 "6: "
+set $workspace1 "1: "
+set $workspace2 "2: "
+set $workspace3 "3: "
+set $workspace4 "4: "
+set $workspace5 "5: "
+set $workspace6 "6: "
 set $workspace7 "7: "
 set $workspace8 "8: "
 set $workspace9 "9: "
@@ -56,13 +62,6 @@ bindsym $mod+Shift+q kill
 bindsym $mod+p exec sh /home/felix/.rofi_command.sh run
 bindsym $mod+Tab exec sh /home/felix/.rofi_command.sh window
 
-#bindsym $mod+Shift+s exec sh /home/felix/.suspend.sh
-#bindsym $mod+Shift+t exec systemctl poweroff
-
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need tha
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 # bindsym $mod+j focus left
@@ -101,7 +100,7 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-#workspace_layout tabbed
+workspace_layout tabbed
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -140,13 +139,14 @@ bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace0
 
 # assign [class = "X-terminal-emulator"] $workspace1
-assign [class = "Chromium"] $workspace2
-#assign [class = "Firefox"] $workspace3
-assign [class = "Nemo"] $workspace4
-assign [class = "Nautilus"] $workspace4
-assign [class = "Icedove"] $workspace5
-assign [class = "Audacious"] $workspace6
-assign [class = "Keepassx"] $workspace3
+# assign [class = "Chromium"] $workspace2
+# assign [class = "Firefox"] $workspace3
+# assign [class = "Nemo"] $workspace4
+# assign [class = "Nautilus"] $workspace4
+# assign [class = "Icedove"] $workspace5
+# assign [class = "Audacious"] $workspace6
+# assign [class = "Keepassx"] $workspace3
+# assign [class = "Uzbl-core"] $workspace2
 
 # Does not work since spotify does not follow conventions. A workaround is used instead
 #assign [class = "spotify"] $workspace3
@@ -154,10 +154,6 @@ assign [class = "Keepassx"] $workspace3
 
 bindsym $mod+Control+Right workspace next
 bindsym $mod+Control+Left workspace prev
-
-bindsym --whole-window $mod+button8 workspace prev
-
-bindsym --whole-window $mod+button9 workspace next
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -180,10 +176,10 @@ mode "resize" {
         # bindsym odiaeresis resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 2 px or 2 ppt
+        bindsym Down resize grow height 2 px or 2 ppt
+        bindsym Up resize shrink height 2 px or 2 ppt
+        bindsym Right resize grow width 2 px or 2 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -195,7 +191,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        #mode dock
+        mode dock
         position top
 		font pango:FontAwesome 8
 
@@ -214,7 +210,7 @@ bar {
 }
 
 bar {
-        #mode dock
+        mode dock
         position bottom
 		font pango:FontAwesome 8
         status_command i3blocks
@@ -243,20 +239,24 @@ bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+ unmute && pkill -SIGR
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2%- unmute && pkill -SIGRTMIN+10 i3blocks
 bindsym XF86AudioMute exec amixer -q set Master toggle
 
-bindsym XF86AudioPrev exec --no-startup-id audtool --playlist-reverse && pkill -SIGRTMIN+12 i3blocks
-bindsym XF86AudioPlay exec --no-startup-id audtool --playback-playpause
-bindsym XF86AudioNext exec --no-startup-id audtool --playlist-advance && pkill -SIGRTMIN+12 i3blocks
+# bindsym XF86AudioPrev exec --no-startup-id audtool --playlist-reverse && pkill -SIGRTMIN+12 i3blocks
+# bindsym XF86AudioPlay exec --no-startup-id audtool --playback-playpause
+# bindsym XF86AudioNext exec --no-startup-id audtool --playlist-advance && pkill -SIGRTMIN+12 i3blocks
+
+bindsym XF86AudioPrev exec --no-startup-id cmus-remote -r && pkill -SIGRTMIN+12 i3blocks
+bindsym XF86AudioPlay exec --no-startup-id cmus-remote -u
+bindsym XF86AudioNext exec --no-startup-id cmus-remote -n && pkill -SIGRTMIN+12 i3blocks
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
-#exec_always --no-startup-id feh --bg-scale /home/felix/Bilder/mane6_wallpaper.png
+# exec_always --no-startup-id feh --bg-scale /home/felix/Bilder/mane6_wallpaper.png
 exec_always --no-startup-id feh --bg-scale /home/felix/Bilder/mane6_wallpaper_2.png
-#exec_always --no-startup-id  feh --bg-scale /home/felix/Bilder/sleepy_twilight.png
-#exec_always --no-startup-id feh --bg-scale /home/felix/Bilder/rd_wallpaper.jpg
+# exec_always --no-startup-id feh --bg-scale /home/felix/Bilder/sleepy_twilight.png
+# exec_always --no-startup-id feh --bg-scale /home/felix/Bilder/rd_wallpaper.jpg
 exec_always --no-startup-id pkill compton; compton -b --config /home/felix/.compton_config
-exec --no-startup-id sudo ifup wlo1 && pkill -SIGRTMIN+10 i3blocks
+# exec --no-startup-id sudo ifup wlo1 && pkill -SIGRTMIN+10 i3blocks
 
 
 hide_edge_borders none
@@ -286,15 +286,14 @@ bindsym $mod+Shift+s mode "$mode_system"
 
 
 
-set $mode_launcher [c]hromium  [m]idnight commander  [n]emo  [t]hunderbird  [k]eepassx  [a]udacious  team[v]iewer
+set $mode_launcher [m]idnight commander  [t]hunderbird  [k]eepassx  [a]udacious  [u]zbl  [e]vince
 mode "$mode_launcher" {
-    bindsym m workspace $workspace1 exec --no-startup-id i3-sensible-terminal -e mc, mode "default"
-    bindsym c workspace $workspace2 exec --no-startup-id chromium --enable-remote-extensions, mode "default"
-    bindsym k workspace $workspace3 exec --no-startup-id keepassx, mode "default"
-    bindsym n workspace $workspace4 exec --no-startup-id nemo, mode "default"
-    bindsym t workspace $workspace5 exec --no-startup-id thunderbird, mode "default"
-    bindsym a workspace $workspace6 exec --no-startup-id audacious, mode "default"
-    bindsym v exec --no-startup-id teamviewer, mode "default"
+    bindsym m exec --no-startup-id i3-sensible-terminal -e mc, mode "default"
+    bindsym k exec --no-startup-id keepassx, mode "default"
+    bindsym t exec --no-startup-id thunderbird, mode "default"
+    bindsym a exec --no-startup-id audacious, mode "default"
+    bindsym u exec --no-startup-id uzbl-browser, mode "default"
+    bindsym e exec --no-startup-id evince, mode "default"
 
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
@@ -307,7 +306,7 @@ bindsym $mod+Shift+p mode "$mode_launcher"
 set $mode_wifi Wifi [u]p  [d]own
 mode "$mode_wifi" {
 
-    bindsym u exec --no-startup-id sudo ifup wlan0 && pkill -SIGRTMIN+10 i3blocks, mode "default"
+    bindsym u exec --no-startup-id sudo ifup wlo1 && pkill -SIGRTMIN+10 i3blocks, mode "default"
     bindsym d exec --no-startup-id sudo ifdown wlan0 && pkill -SIGRTMIN+10 i3blocks, mode "default"
 
     # exit system mode: "Enter" or "Escape"
@@ -316,10 +315,10 @@ mode "$mode_wifi" {
 }
 bindsym $mod+Shift+w mode "$mode_wifi"
 
-set $mode_display Video Output: [H]DMI  [V]GA
+set $mode_video Video Output: [H]DMI  [V]GA
 set $mode_hdmi HDMI: [l]eft  [m]irror  [r]ight  [o]ff  [s]ingle
 set $mode_vga VGA: [l]eft  [m]irror  [r]ight  [o]ff  [s]ingle
-mode "$mode_display" {
+mode "$mode_video" {
 
     bindsym h mode "$mode_hdmi"
     bindsym v mode "$mode_vga"
@@ -328,7 +327,7 @@ mode "$mode_display" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Shift+d mode "$mode_display"
+bindsym $mod+Shift+v mode "$mode_video"
 
 mode "$mode_hdmi" {
     bindsym l exec --no-startup-id xrandr --output HDMI-1 --auto --left-of LVDS-1 --output LVDS-1 --auto --primary && i3-msg restart, mode "default"
@@ -336,6 +335,10 @@ mode "$mode_hdmi" {
     bindsym r exec --no-startup-id xrandr --output HDMI-1 --auto --right-of LVDS-1 --output LVDS-1 --auto --primary && i3-msg restart, mode "default"
     bindsym o exec --no-startup-id xrandr --output HDMI-1 --off --output LVDS-1 --auto --primary && i3-msg restart, mode "default"
     bindsym s exec --no-startup-id xrandr --output HDMI-1 --auto --primary --output LVDS-1 --off && i3-msg restart, mode "default"
+    
+    # exit display mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 mode "$mode_vga" {
@@ -344,6 +347,10 @@ mode "$mode_vga" {
     bindsym r exec --no-startup-id xrandr --output VGA-1 --auto --right-of LVDS-1 --output LVDS-1 --auto --primary && i3-msg restart, mode "default"
     bindsym o exec --no-startup-id xrandr --output VGA-1 --off --output LVDS-1 --auto --primary && i3-msg restart, mode "default"
     bindsym s exec --no-startup-id xrandr --output VGA-1 --auto --primary --output LVDS-1 --off && i3-msg restart, mode "default"
+    
+    # exit display mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 bindsym $mod+Shift+greater move workspace to output right
@@ -401,4 +408,3 @@ client.urgent 	 		$orange $orange $baseB3 $red
 
 ##
 ## Using a combination of small and space, we can get some padding
-for_window [class=".*"] title_format "<span><small> %title </small></span>"
