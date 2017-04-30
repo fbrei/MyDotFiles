@@ -4,9 +4,7 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'yuttie/comfortable-motion.vim'
 
-    Plug 'tomasr/molokai'
-    Plug 'bounceme/base.vim'
-    Plug 'sjl/badwolf'
+    Plug 'noah/vim256-color'
 
     Plug 'MarcWeber/vim-addon-mw-utils'
     Plug 'tomtom/tlib_vim'
@@ -17,6 +15,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'bling/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'sjl/gundo.vim'
+    Plug 'YorickPeterse/happy_hacking.vim'
+    Plug 'xolox/vim-colorscheme-switcher'
+    Plug 'xolox/vim-misc'
 call plug#end()
 
 set hidden
@@ -28,10 +29,7 @@ set lazyredraw
 set scrolloff=5
 set t_Co=256
 
-filetype plugin on
-
 syntax on
-colorscheme base
 set background=dark
 
 set number
@@ -47,7 +45,7 @@ set expandtab
 set shiftwidth=4
 
 set cursorline
-hi CursorLine   cterm=NONE ctermbg=black
+hi CursorLine   cterm=underline ctermbg=none
 
 set autoindent
 
@@ -59,35 +57,31 @@ set ignorecase
 set hlsearch
 nnoremap <silent> <leader><space> :nohlsearch<CR>
 
-
-set ssop-=options
-
 set undofile
 set history=10000
-
 
 set wildignore=*.class
 
 nnoremap <silent> <leader>s :vsplit<CR>
 nnoremap <silent> <leader>S :split<CR>
 
-" inoremap { {<CR>}<ESC>ko<TAB>
-inoremap { {}<ESC>i
+inoremap { {<CR>}<ESC>ko<TAB>
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
 inoremap " ""<ESC>i
-inoremap qq <ESC>
+
+autocmd filetype tex inoremap { {}<ESC>i
+autocmd filetype tex inoremap $ $$<ESC>i
 
 nnoremap <silent><F2> :NERDTreeToggle<CR>
 nnoremap <silent><F3> :GundoToggle<CR>
 
-nnoremap <silent> <leader>u :GundoToggle<CR>
 nnoremap <silent> <C-S> :wa<CR>:mksession!<CR>:echo "Session saved"<CR>
 nnoremap <silent> <C-Q> :qa<CR>
 nnoremap <silent> <C-L> :source Session.vim<CR>
+set ssop-=options
 
-let NERDTreeQuitOnOpen=1
-
+colorscheme heroku
 hi Normal ctermbg=none
 hi NonText ctermbg=none
 hi LineNr ctermbg=none
@@ -98,42 +92,9 @@ nnoremap <C-Right> <C-W><Right>
 nnoremap <C-Up> <C-W><Up>
 nnoremap <C-Down> <C-W><Down>
 
-"" Switch tabs with Alt + Number
-""execute "set <M-1>=\e1"
-""nnoremap <M-1> 1gt
-""
-""execute "set <M-2>=\e2"
-""nnoremap <M-2> 2gt
-""
-""execute "set <M-3>=\e3"
-""nnoremap <M-3> 3gt
-""
-""execute "set <M-4>=\e4"
-""nnoremap <M-4> 4gt
-""
-""execute "set <M-5>=\e5"
-""nnoremap <M-5> 5gt
-""
-""execute "set <M-6>=\e6"
-""nnoremap <M-6> 6gt
-""
-""execute "set <M-7>=\e7"
-""nnoremap <M-7> 7gt
-""
-""execute "set <M-8>=\e8"
-""nnoremap <M-8> 8gt
-""
-""execute "set <M-9>=\e9"
-""nnoremap <M-9> 9gt
-
-let g:comfortable_motion_interval = 250.0 / 60
-let g:comfortable_motion_friction = 100.0
-let g:comfortable_motion_air_drag = 3.0
-
-" let Tlist_Use_Right_Window = 1
-" let Tlist_GainFocus_On_ToggleOpen = 1
-" let Tlist_Close_On_Select = 1
-" let Tlist_WinWidth = 50
+let g:comfortable_motion_interval = 1000.0 / 60
+let g:comfortable_motion_friction = 80.0
+let g:comfortable_motion_air_drag = 2.0
 
 hi Visual term=reverse cterm=reverse guibg=Grey
 set laststatus=2
@@ -142,9 +103,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_theme='base16_default'
 
-nnoremap <silent> <Leader>p  :bnext<CR>
-nnoremap <silent> <Leader>P  :bprevious<CR>
-
+let NERDTreeQuitOnOpen=1
 
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
@@ -153,3 +112,4 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 
 let g:gundo_prefer_python3 = 1
+
