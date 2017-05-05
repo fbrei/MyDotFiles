@@ -27,7 +27,6 @@ filetype plugin on
 set nocompatible
 set lazyredraw
 set scrolloff=5
-set t_Co=256
 
 syntax on
 set background=dark
@@ -47,7 +46,8 @@ set shiftwidth=4
 set cursorline
 hi CursorLine   cterm=underline ctermbg=none
 
-set autoindent
+filetype indent off
+set smartindent
 
 set splitbelow
 set splitright
@@ -81,11 +81,16 @@ nnoremap <silent> <C-Q> :qa<CR>
 nnoremap <silent> <C-L> :source Session.vim<CR>
 set ssop-=options
 
-colorscheme heroku
+colorscheme distinguished
 hi Normal ctermbg=none
 hi NonText ctermbg=none
-hi LineNr ctermbg=none
+hi LineNr  ctermfg=white cterm=bold
 hi Special ctermbg=none
+hi Comment ctermfg=lightblue ctermbg=none
+hi OverLength ctermbg=black
+hi ColorColumn ctermbg=darkgrey
+hi CursorLine cterm=underline ctermbg=none ctermfg=none
+hi Visual cterm=reverse
 
 nnoremap <C-Left> <C-W><Left>
 nnoremap <C-Right> <C-W><Right>
@@ -96,7 +101,6 @@ let g:comfortable_motion_interval = 1000.0 / 60
 let g:comfortable_motion_friction = 80.0
 let g:comfortable_motion_air_drag = 2.0
 
-hi Visual term=reverse cterm=reverse guibg=Grey
 set laststatus=2
 
 let g:airline#extensions#tabline#enabled = 1
@@ -112,4 +116,3 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 
 let g:gundo_prefer_python3 = 1
-
