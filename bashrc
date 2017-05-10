@@ -143,6 +143,8 @@ mkcd() {
 
 stty -ixon
 
+export TERM=rxvt-unicode-256color
+
 # added by Miniconda3 4.3.11 installer
 export PATH="/home/felix/.miniconda3/bin:$PATH"
 
