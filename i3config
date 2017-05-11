@@ -242,6 +242,7 @@ exec --no-startup-id pkill compton; compton -b --config /home/felix/.compton_con
 
 # Start urxvt daemon and turn off all acoustic beeps
 exec --no-startup-id urxvtd -f
+exec --no-startup-id bash tmux_init.sh
 exec --no-startup-id xset b off
 
 hide_edge_borders none
@@ -250,8 +251,6 @@ for_window [class="^.*"] border pixel 2
 # Key indicator 
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
-
-#exec --no-startup-id xautolock -time 5 -locker 'lock -- scrot --silent' &
 
 
 set $mode_system System [l]ock  [s]uspend  [r]eboot  [p]oweroff

@@ -11,4 +11,3 @@ then
 
     $TMUX rename-window -t $SESSIONNAME:0 bash
 fi
-$TMUX attach-session -t $SESSIONNAME
