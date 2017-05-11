@@ -91,6 +91,7 @@ hi OverLength ctermbg=black
 hi ColorColumn ctermbg=darkgrey
 hi CursorLine cterm=underline ctermbg=none ctermfg=none
 hi Visual cterm=reverse
+hi CursorLineNr ctermbg=235
 
 nnoremap <C-Left> <C-W><Left>
 nnoremap <C-Right> <C-W><Right>
