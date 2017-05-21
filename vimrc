@@ -6,9 +6,7 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'noah/vim256-color'
 
-    Plug 'MarcWeber/vim-addon-mw-utils'
-    Plug 'tomtom/tlib_vim'
-    Plug 'garbas/vim-snipmate'
+    Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
 
     Plug 'tpope/vim-fugitive'
@@ -20,11 +18,12 @@ call plug#begin('~/.vim/plugged')
     Plug 'xolox/vim-misc'
 call plug#end()
 
+set nocompatible
+
 set hidden
 set nowrap
 
 filetype plugin on
-set nocompatible
 set lazyredraw
 set scrolloff=5
 
@@ -47,7 +46,6 @@ set cursorline
 hi CursorLine   cterm=underline ctermbg=none
 
 filetype indent off
-set smartindent
 
 set splitbelow
 set splitright
@@ -72,6 +70,8 @@ inoremap " ""<ESC>i
 
 autocmd filetype tex inoremap { {}<ESC>i
 autocmd filetype tex inoremap $ $$<ESC>i
+
+autocmd filetype python inoremap { {}<ESC>i
 
 nnoremap <silent><F2> :NERDTreeToggle<CR>
 nnoremap <silent><F3> :GundoToggle<CR>
@@ -117,3 +117,12 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 
 let g:gundo_prefer_python3 = 1
+
+" Allow utilsnips to look for custom snippets
+let g:UltiSnipsSnippetsDir="~/.vim/MySnips"
+let g:UltiSnipsSnippetDirectories=["MySnips", "UltiSnips"]
+
+" Set controls for utilsnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
