@@ -1,0 +1,183 @@
+## Main functions
+snippet main "Main function"
+int main(int argc, const char** argv) {
+
+	${1}
+
+	return 0;
+}
+endsnippet
+
+snippet mainn "Main function with no arguments"
+int main(void) {
+
+	${0}
+	
+	return 0;
+}
+endsnippet
+
+## ================================================
+
+## Function definitions
+
+# no args
+snippet fun0 "Function without arguments"
+${1:void} ${2:fun}() {
+	${3}
+}
+endsnippet
+
+snippet dfun0 "Argumentless function with doc"
+/**
+ * \brief ${3:Brief description}
+ *
+ * ${4:Long description}
+ * 
+ * \return ${5:Return value, delete if void}
+ */
+${1:void} ${2:fun}() {
+	${6}
+}
+endsnippet
+
+# -------------------------------------------------
+
+# 1 arg
+snippet fun "Function with one argument"
+${1:void} ${2:fun}(${3:type} ${4:name}) {
+	${5}
+}
+endsnippet
+
+snippet dfun "Documented function with one argument"
+/**
+ * \brief ${5:Brief description}
+ *
+ * ${6:Long description}
+ * 
+ * \param $4 ${7:}
+ * \return ${8:Return value, delete if void}
+ */
+${1:void} ${2:fun}(${3:type} ${4:name}) {
+	${9}
+}
+endsnippet
+
+
+# -------------------------------------------------
+
+# 2 arg
+snippet fun2 "Function with two arguments"
+${1:void} ${2:fun}(${3:type} ${4:name}, ${5:type} ${6:name}) {
+	${7}
+}
+endsnippet
+
+snippet dfun2 "Documented function with two arguments"
+/**
+ * \brief ${7:Brief description}
+ *
+ * ${8:Long description}
+ * 
+ * \param $4 ${9:}
+ * \param $6 ${10:}
+ * \return ${11:Return value, delete if void}
+ */
+${1:void} ${2:fun}(${3:type} ${4:name}, ${5:type} ${6:name}) {
+	${12}
+}
+endsnippet
+
+
+# -------------------------------------------------
+
+# 3 arg
+snippet fun3 "Function with three arguments"
+${1:void} ${2:fun}(${3:type} ${4:name}, ${5:type} ${6:name}, ${7:type} ${8:name}) {
+	${9}
+}
+endsnippet
+
+snippet dfun3 "Documented function with three arguments"
+/**
+ * \brief ${9:Brief description}
+ *
+ * ${10:Long description}
+ * 
+ * \param $4 ${11:}
+ * \param $6 ${12:}
+ * \param $8 ${13:}
+ * \return ${14:Return value, delete if void}
+ */
+${1:void} ${2:fun}(${3:type} ${4:name}, ${5:type} ${6:name}, ${7:type} ${8:name}) {
+	${15}
+}
+endsnippet
+
+
+## ================================================
+
+## Control structures
+
+snippet for "For loop"
+for(int ${1:ii}; $1 < ${2:count}; $1${3:++}) {
+	${4}
+}
+endsnippet
+
+snippet if "If without else"
+if(${1:1}) {
+	${2}
+}
+endsnippet
+
+snippet ife "If with else branch"
+if(${1:1}) {
+	${2}
+} else {
+	${3}
+}
+endsnippet
+
+snippet el "Else branch"
+else {
+	${1}
+}
+endsnippet
+
+snippet elif "Else with if"
+else if(${1:1}) {
+	${2}
+}
+endsnippet
+
+snippet wh "While loop"
+while(${1:1}) {
+	${2}
+}
+endsnippet
+
+## ================================================
+
+## General shortcuts
+
+snippet sz "sizeof"
+sizeof(${1})
+endsnippet
+
+snippet ma "Malloc"
+malloc(${1});
+endsnippet
+
+snippet mas "Malloc with sizeof"
+malloc(${1} * sizeof(${2}));
+endsnippet
+
+snippet cas "Calloc with sizeof"
+calloc(${1}, sizeof(${2}));
+endsnippet
+
+snippet fr "Free"
+free(${1});
+endsnippet
