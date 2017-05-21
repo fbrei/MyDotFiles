@@ -35,7 +35,7 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec $TERM -e bash tmux_work.sh
+bindsym $mod+Return exec $TERM
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -82,7 +82,7 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-workspace_layout tabbed
+workspace_layout default
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -232,10 +232,14 @@ bindsym XF86AudioNext exec --no-startup-id cmus-remote -n && pkill -SIGRTMIN+12 
 
 # Wallpapers
 # exec_always --no-startup-id feh --bg-scale /home/felix/Bilder/mane6_wallpaper.png
-exec_always --no-startup-id feh --bg-scale /home/felix/Bilder/mane6_wallpaper_2.png
+# exec_always --no-startup-id feh --bg-scale /home/felix/Bilder/mane6_wallpaper_2.png
 # exec_always --no-startup-id feh --bg-scale /home/felix/Bilder/sleepy_twilight.png
 # exec_always --no-startup-id feh --bg-scale /home/felix/Bilder/rd_wallpaper.jpg
 # exec_always --no-startup-id feh --bg-scale /home/felix/Bilder/debian.jpg
+# exec_always --no-startup-id feh --bg-scale /home/felix/Bilder/reaper_dash.png
+# exec_always --no-startup-id feh --bg-scale /home/felix/Bilder/twilight_avatar.jpg
+# exec_always --no-startup-id feh --bg-scale /home/felix/Bilder/dark_side.jpg
+exec_always --no-startup-id feh --bg-scale /home/felix/Bilder/equestrian_gateway_small.png
 
 # Compositor
 exec --no-startup-id pkill compton; compton -b --config /home/felix/.compton_config
@@ -268,13 +272,15 @@ bindsym $mod+Shift+s mode "$mode_system"
 
 
 
-set $mode_launcher [I]nternet Browser  [F]ile Manager  [E]-Mail-Client  [M]usic Player
+set $mode_launcher [I]nternet Browser  [F]ile Manager  [E]-Mail-Client  [M]usic Player  [U]dacity  Google [D]rive
 mode "$mode_launcher" {
     bindsym i exec --no-startup-id uzbl-browser, mode "default"
     bindsym f exec --no-startup-id $TERM -e mc, mode "default"
     bindsym e exec --no-startup-id $TERM -e mutt, mode "default"
     bindsym m exec --no-startup-id $TERM -e cmus, mode "default"
     bindsym p exec --no-startup-id keepassx, mode "default"
+    bindsym u exec --no-startup-id chromium --app=https://www.udacity.com, mode "default"
+    bindsym d exec --no-startup-id chromium --app=https://drive.google.com, mode "default"
 
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
@@ -288,7 +294,7 @@ set $mode_wifi Wifi [u]p  [d]own
 mode "$mode_wifi" {
 
     bindsym u exec --no-startup-id sudo ifup wlo1 && pkill -SIGRTMIN+10 i3blocks, mode "default"
-    bindsym d exec --no-startup-id sudo ifdown wlan0 && pkill -SIGRTMIN+10 i3blocks, mode "default"
+    bindsym d exec --no-startup-id sudo ifdown wlo1 && pkill -SIGRTMIN+10 i3blocks, mode "default"
 
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
@@ -390,5 +396,5 @@ client.urgent 	 		$orange $orange $baseB3 $red
 ##
 ## Using a combination of small and space, we can get some padding
 
-gaps inner 10
-gaps outer 5
+# gaps inner 10
+# gaps outer 5
