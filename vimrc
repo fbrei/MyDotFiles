@@ -124,5 +124,5 @@ let g:UltiSnipsSnippetDirectories=["MySnips", "UltiSnips"]
 
 " Set controls for utilsnips
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsJumpForwardTrigger="<C-f"
+let g:UltiSnipsJumpBackwardTrigger="<C-b>"
